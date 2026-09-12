@@ -34,42 +34,15 @@
         </div>
       </section>
 
-      <section class="calibration" aria-labelledby="calibration-heading">
-        <div>
-          <h2 id="calibration-heading">Map calibration</h2>
-          <p>Metres represented by one map unit. Adjust this value if your map uses a different scale.</p>
-        </div>
-        <div class="calibration-input">
-          <label for="metres-per-unit">Metres per map unit</label>
-          <div class="number-unit">
-            <input id="metres-per-unit" name="metres-per-unit" type="number" min="0.000001" step="any"
-              value="70.52014012559863" inputmode="decimal" aria-describedby="metres-per-unit-error">
-            <span>m / unit</span>
-          </div>
-          <p class="error-message" id="metres-per-unit-error" role="alert"></p>
-        </div>
-      </section>
-
       <div class="actions">
         <button class="button primary" type="submit">Calculate range</button>
-        <button class="button secondary" id="swap-positions" type="button">Swap A and B</button>
-        <button class="button tertiary" id="reset-example" type="button">Reset example</button>
       </div>
     </form>
 
     <section class="result-panel" aria-labelledby="range-heading" aria-live="polite">
       <p class="eyebrow">Calculated direct range</p>
       <h2 id="range-heading"><span id="range-value">—</span> <span class="range-unit">m</span></h2>
-      <p class="result-status" id="result-status">Enter both coordinate pairs, then calculate.</p>
-      <dl class="calculation-details" id="calculation-details" hidden>
-        <div><dt>Delta X</dt><dd id="delta-x">—</dd></div>
-        <div><dt>Delta Y</dt><dd id="delta-y">—</dd></div>
-        <div><dt>Map distance</dt><dd id="map-distance">—</dd></div>
-        <div><dt>Calculation</dt><dd id="formula">—</dd></div>
-      </dl>
     </section>
-
-    <footer>Range uses straight-line map distance. Confirm map scale before firing.</footer>
   </main>
   <script src="script.js"></script>
 </body>

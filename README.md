@@ -4,14 +4,14 @@ A dependency-free, static field tool for converting a direct map-coordinate dist
 
 ## Calibration
 
-The default calibration is **70.52014012559863 metres per map unit**. It is derived from the supplied reference positions:
+The fixed calibration is **70.52014012559863 metres per map unit**. It is derived from the supplied reference positions:
 
 - A: `x98.43, y113.38`
 - B: `x94.53, y109.03`
 - Euclidean map distance: `sqrt((-3.9)^2 + (-4.35)^2) = 5.842302628245133` map units
 - Calibration: `412 / 5.842302628245133 = 70.52014012559863` metres per map unit
 
-Change **Metres per map unit** for a map with a different scale.
+The app keeps this calibration fixed because the Wardogs map scale is consistent.
 
 ## GitHub Pages deployment
 
