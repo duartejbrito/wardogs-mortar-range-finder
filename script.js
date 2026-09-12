@@ -45,13 +45,16 @@
   const myInput = document.getElementById("my-position");
   const targetInput = document.getElementById("target-position");
   const calibrationInput = document.getElementById("metres-per-unit");
+  const myPositionError = document.getElementById("my-position-error");
+  const targetPositionError = document.getElementById("target-position-error");
+  const calibrationError = document.getElementById("metres-per-unit-error");
   const rangeValue = document.getElementById("range-value");
   const resultStatus = document.getElementById("result-status");
   const details = document.getElementById("calculation-details");
 
-  function setError(input, message) {
+  function setError(input, errorElement, message) {
     input.setAttribute("aria-invalid", message ? "true" : "false");
-    document.getElementById(`${input.id}-error`).textContent = message || "";
+    errorElement.textContent = message || "";
   }
 
   function formatNumber(value, decimals) {
@@ -73,9 +76,9 @@
     const myPosition = parseCoordinate(myInput.value);
     const targetPosition = parseCoordinate(targetInput.value);
     const metresPerUnit = Number(calibrationInput.value);
-    setError(myInput, myPosition.error);
-    setError(targetInput, targetPosition.error);
-    setError(calibrationInput, !Number.isFinite(metresPerUnit) || metresPerUnit <= 0
+    setError(myInput, myPositionError, myPosition.error);
+    setError(targetInput, targetPositionError, targetPosition.error);
+    setError(calibrationInput, calibrationError, !Number.isFinite(metresPerUnit) || metresPerUnit <= 0
       ? "Enter a calibration greater than zero."
       : "");
 

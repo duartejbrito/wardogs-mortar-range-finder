@@ -20,5 +20,8 @@ const markup = fs.readFileSync("index.html", "utf8");
 for (const inputId of ["my-position", "target-position", "metres-per-unit"]) {
   assert.match(markup, new RegExp(`id="${inputId}-error"`));
 }
+const script = fs.readFileSync("script.js", "utf8");
+assert.doesNotMatch(script, /getElementById\(`\$\{input\.id\}-error`\)/);
+assert.match(script, /setError\(calibrationInput, calibrationError,/);
 
-console.log("Parser, range-calculation, and error-region tests passed.");
+console.log("Parser, range-calculation, and validation-binding tests passed.");
