@@ -13,8 +13,14 @@ assert.match(parseCoordinate("x1, y2 metres").error, /Use x followed/);
 const myPosition = parseCoordinate("x98.43, y113.38");
 const targetPosition = parseCoordinate("x94.53, y109.03");
 const result = calculateDistance(myPosition, targetPosition);
-assert.equal(Math.round(result.metres), 412);
-assert.equal(METRES_PER_MAP_UNIT, 70.52014012559863);
+assert.equal(Math.round(result.metres), 584);
+assert.equal(METRES_PER_MAP_UNIT, 100);
+
+const secondResult = calculateDistance(
+  parseCoordinate("x97.83, y109.53"),
+  parseCoordinate("x93.15, y92.60")
+);
+assert.equal(Math.round(secondResult.metres), 1756);
 
 const markup = fs.readFileSync("index.html", "utf8");
 for (const inputId of ["my-position", "target-position"]) {

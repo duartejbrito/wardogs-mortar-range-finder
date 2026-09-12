@@ -1,7 +1,7 @@
 (function (root) {
   "use strict";
 
-  const METRES_PER_MAP_UNIT = 70.52014012559863;
+  const METRES_PER_MAP_UNIT = 100;
 
   function parseCoordinate(value) {
     const text = String(value).trim();

@@ -1,17 +1,16 @@
 # Wardogs Mortar Range Finder
 
-A dependency-free, static field tool for converting a direct map-coordinate distance into metres. It accepts coordinate pairs in the format `x98.43, y113.38`, shows the X/Y deltas and map-distance calculation, and rounds the result to the nearest metre.
+A dependency-free, static field tool for converting a direct map-coordinate distance into metres. It accepts coordinate pairs in the format `x98.43, y113.38` and rounds the calculated direct range to the nearest metre.
 
-## Calibration
+## Range calculation
 
-The fixed calibration is **70.52014012559863 metres per map unit**. It is derived from the supplied reference positions:
+For A (my position) and B (target), the tool calculates:
 
-- A: `x98.43, y113.38`
-- B: `x94.53, y109.03`
-- Euclidean map distance: `sqrt((-3.9)^2 + (-4.35)^2) = 5.842302628245133` map units
-- Calibration: `412 / 5.842302628245133 = 70.52014012559863` metres per map unit
+```text
+sqrt((Ax - Bx)^2 + (Ay - By)^2) × 100
+```
 
-The app keeps this calibration fixed because the Wardogs map scale is consistent.
+Multiplying by 100 shifts the map-distance result two decimal places to convert it to metres. For example, A `x97.83, y109.53` and B `x93.15, y92.60` produce **1,756 m** after rounding.
 
 ## GitHub Pages deployment
 
