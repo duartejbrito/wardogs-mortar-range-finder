@@ -1,6 +1,7 @@
 "use strict";
 
 const assert = require("node:assert/strict");
+const fs = require("node:fs");
 const { EXAMPLE, parseCoordinate, calculateDistance } = require("./script.js");
 
 assert.deepEqual(parseCoordinate("x98.43, y113.38"), { x: 98.43, y: 113.38 });
@@ -15,4 +16,9 @@ const result = calculateDistance(myPosition, targetPosition, EXAMPLE.metresPerUn
 assert.equal(Math.round(result.metres), 412);
 assert.ok(Math.abs(result.mapDistance - 5.842302628245133) < 1e-12);
 
-console.log("Parser and range-calculation tests passed.");
+const markup = fs.readFileSync("index.html", "utf8");
+for (const inputId of ["my-position", "target-position", "metres-per-unit"]) {
+  assert.match(markup, new RegExp(`id="${inputId}-error"`));
+}
+
+console.log("Parser, range-calculation, and error-region tests passed.");
