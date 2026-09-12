@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculate Wardogs mortar range from two map coordinates.">
+  <title>Wardogs Mortar Range Finder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="masthead">
+      <p class="eyebrow">Field calculation tool</p>
+      <h1>Wardogs Mortar Range Finder</h1>
+      <p class="intro">Enter your position and the target position to calculate a direct firing range.</p>
+    </header>
+
+    <form id="range-form" novalidate>
+      <section class="coordinate-grid" aria-label="Coordinate inputs">
+        <div class="field-card">
+          <label for="my-position">A — My position</label>
+          <p class="field-hint" id="my-position-hint">Format: <code>x98.43, y113.38</code></p>
+          <input id="my-position" name="my-position" type="text" inputmode="decimal" autocomplete="off"
+            placeholder="x98.43, y113.38" aria-describedby="my-position-hint my-position-error">
+          <p class="error-message" id="my-position-error" role="alert"></p>
+        </div>
+
+        <div class="field-card">
+          <label for="target-position">B — Target position</label>
+          <p class="field-hint" id="target-position-hint">Format: <code>x94.53, y109.03</code></p>
+          <input id="target-position" name="target-position" type="text" inputmode="decimal" autocomplete="off"
+            placeholder="x94.53, y109.03" aria-describedby="target-position-hint target-position-error">
+          <p class="error-message" id="target-position-error" role="alert"></p>
+        </div>
+      </section>
+
+      <section class="calibration" aria-labelledby="calibration-heading">
+        <div>
+          <h2 id="calibration-heading">Map calibration</h2>
+          <p>Metres represented by one map unit. Adjust this value if your map uses a different scale.</p>
+        </div>
+        <div class="calibration-input">
+          <label for="metres-per-unit">Metres per map unit</label>
+          <div class="number-unit">
+            <input id="metres-per-unit" name="metres-per-unit" type="number" min="0.000001" step="any"
+              value="70.52014012559863" inputmode="decimal" aria-describedby="calibration-error">
+            <span>m / unit</span>
+          </div>
+          <p class="error-message" id="calibration-error" role="alert"></p>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button class="button primary" type="submit">Calculate range</button>
+        <button class="button secondary" id="swap-positions" type="button">Swap A and B</button>
+        <button class="button tertiary" id="reset-example" type="button">Reset example</button>
+      </div>
+    </form>
+
+    <section class="result-panel" aria-labelledby="range-heading" aria-live="polite">
+      <p class="eyebrow">Calculated direct range</p>
+      <h2 id="range-heading"><span id="range-value">—</span> <span class="range-unit">m</span></h2>
+      <p class="result-status" id="result-status">Enter both coordinate pairs, then calculate.</p>
+      <dl class="calculation-details" id="calculation-details" hidden>
+        <div><dt>Delta X</dt><dd id="delta-x">—</dd></div>
+        <div><dt>Delta Y</dt><dd id="delta-y">—</dd></div>
+        <div><dt>Map distance</dt><dd id="map-distance">—</dd></div>
+        <div><dt>Calculation</dt><dd id="formula">—</dd></div>
+      </dl>
+    </section>
+
+    <footer>Range uses straight-line map distance. Confirm map scale before firing.</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
